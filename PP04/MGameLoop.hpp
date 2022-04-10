@@ -68,17 +68,17 @@ namespace MuSeoun_Engine {
 		void Render() {
 
 			chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
-			chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::
+			//chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::
 			//system("cls");
 			//cout << "Rendering...";
 
 			cRenderer.Clear();
 			cRenderer.MoveCursor(10, 20);
-			cRenderer.DrawString("test");
+			//cRenderer.DrawString("test");
 
 			chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint;
 
-			string fps = "FPS(milliseconds) : " + to_string(renderDuration.count());
+			string fps = "FPS : " + to_string(1/renderDuration.count());
 			cRenderer.DrawString(fps);
 
 			//cout << "Rendering speed : " << renderDuration.count() << "sec" << endl;

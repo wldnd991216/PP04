@@ -142,7 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameLoop.hpp" />
+    <ClInclude Include="MGameLoop.hpp" />
     <ClInclude Include="MconsolUtil.hpp" />
   </ItemGroup>
   <ItemGroup>
