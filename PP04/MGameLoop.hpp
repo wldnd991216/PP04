@@ -4,6 +4,8 @@
 #include <windows.h>
 #include "MconsolUtil.hpp"
 #include <string>
+#include "Player.hpp"
+
 using namespace std;
 
 namespace MuSeoun_Engine {
@@ -16,6 +18,9 @@ namespace MuSeoun_Engine {
 	private:
 		bool _isGameRinning;
 		MConsolRenderer cRenderer;
+		chrono::system_clock::time_point startRenderTimePoint;
+		chrono::duration<double> renderDuration;
+		Player p;
 
 	public:
 		MGameLoop() {
@@ -67,19 +72,27 @@ namespace MuSeoun_Engine {
 		}
 		void Render() {
 
-			chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
+			
 			//chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::
 			//system("cls");
 			//cout << "Rendering...";
 
 			cRenderer.Clear();
-			cRenderer.MoveCursor(10, 20);
+
+			cRenderer.MoveCursor(p.x, p.y);
+			cRenderer.DrawString("P");
+
 			//cRenderer.DrawString("test");
 
-			chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+			cRenderer.MoveCursor(10, 20);
+			renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+			startRenderTimePoint = chrono::system_clock::now();
+
+			
 
 			string fps = "FPS : " + to_string(1/renderDuration.count());
 			cRenderer.DrawString(fps);
+			this_thread::sleep_for(chrono::milliseconds(20));
 
 			//cout << "Rendering speed : " << renderDuration.count() << "sec" << endl;
 
